@@ -1,5 +1,7 @@
 # Review for [Performance Aware Programming](https://www.computerenhance.com/p/table-of-contents)
 
+- NASM version 2.16.01 compiled on Dec 23 2022
+
 ## Terms
 
 - IPC: Instruction Per Clock
@@ -83,6 +85,7 @@
   - 13 seconds to parse input
   - 12 seconds to do the math
 - Statistics on my computer
+  - Check code at `02.23` dir
   - ```
     Result: 57.97223693479388
     Input = 9.191009044647217 seconds
@@ -115,3 +118,20 @@
   - AL: low 8 bits
 - Read Intel 8086 manual to get more info about instruction structure
 - Use Netwide Assembler(NASM) to assemble
+- Homework: write a disassembler to disassemble register to register mov instruction
+  - Check code at `03.02` dir
+
+### 02 Decoding Multiple Instructions and Suffixes 03.05
+
+- CPU has to look at the first byte to know whethere there is a second byte, and look at the second byte to know whether there is a third byte. "It really is a nasty, dependency-chain process that the CPU has to do to decode these instructions".
+  - > To pack instructions into memory as densely as possible, the 8086 and 8088 CPUs utilize an efficient coding technique. Machine instructions vary from one to six bytes in length.
+- Load: `mov bx, [75]`, Store: `mov [75], bx`
+- The effective address calculation is what we call resolving the address specified by the expression within the brackets.
+- `MOD` field, `00`: no displacement, `01`: 1 byte displacement, `02`: two bytes displacement
+- For `ax`, `bx`, `cx`, `dx`, we can use their high and low part separtely, but for `sp(stack pointer)`, `bp(base pointer)`, `si(source index)`, `di(destination index)`, we can't.
+- Specifal insturtion `Memory to accumulator` and `Accumulator to memory` for using ax.
+- Homework: continue to work on `mov` and handle more cases
+  - Check code at `03.05` dir
+  - NOTE
+    - `displacement` is a signed 16 bit integer, even though the manual says it's unsigned
+    - `accumulator` means `ax`

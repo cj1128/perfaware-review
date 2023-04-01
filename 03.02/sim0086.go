@@ -12,6 +12,7 @@ import (
 func main() {
 	if len(os.Args) == 1 {
 		fmt.Println("usage: sim0086 <file>")
+		os.Exit(0)
 	}
 
 	b, err := ioutil.ReadFile(os.Args[1])
