@@ -132,6 +132,21 @@
 - Specifal insturtion `Memory to accumulator` and `Accumulator to memory` for using ax.
 - Homework: continue to work on `mov` and handle more cases
   - Check code at `03.05` dir
+  - Pass listing37 to listing40
   - NOTE
     - `displacement` is a signed 16 bit integer, even though the manual says it's unsigned
     - `accumulator` means `ax`
+
+### 03 Opcode Patterns in 8086 Arithmetic 03.10
+
+- > It turns out add - like almost all the arithmetic operations in 8086 - also has a “mod reg r/m” encoding, so it can get its source from memory just as easily as a register!
+- `IP-INC8`: 8-bit signed increment to instruction pointer.
+- ADD, Immediate to register/memory
+  - `s=0,w=0`: ADD REG8/MEM8, IMMED8
+  - `s=0,w=1`: ADD REG16/MEM16, IMMED16
+  - `s=1,w=0`: ADD REG8/MEM8, IMMED8
+  - `s=1,w=1`: ADD REG16/MEM16, IMMED8
+- Homework: decode `add`, `sub` and `cmp`, each one has three different encodings (all of which exactly mirror one of the mov encodings)
+  - Check code at `03.10` dir
+  - For jumps, we can output `jxx/loopx $+2+[increment]` instead of producing labels
+  - Pass listing37 to listing41

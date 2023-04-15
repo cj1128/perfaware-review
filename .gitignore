@@ -1,15 +1,1 @@
 .DS_Store
-
-02.23/*.json
-
-03.02/*
-!03.02/*.asm
-!03.02/*.go
-
-03.05/*
-!03.05/*.go
-!03.05/go.mod
-!03.05/go.sum
-!03.05/listing
-03.05/listing/*
-!03.05/listing/*.asm
