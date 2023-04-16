@@ -150,3 +150,14 @@
   - Check code at `03.10` dir
   - For jumps, we can output `jxx/loopx $+2+[increment]` instead of producing labels
   - Pass listing37 to listing41
+
+### 04 8086 Decoder Code Review 03.16
+
+- Casey walks through his decoder implementation
+  - a table based very flexiable way
+  - slow now but it' can be improved
+
+### 05 Using the Reference Decoder as a Shared Library 03.22
+
+- Casey demos how to use his reference decoder as a shared libarry
+- I am gonna use my own decoder
