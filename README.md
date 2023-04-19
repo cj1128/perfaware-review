@@ -150,6 +150,7 @@
   - Check code at `03.10` dir
   - For jumps, we can output `jxx/loopx $+2+[increment]` instead of producing labels
   - Pass listing37 to listing41
+  - TODO: listing42
 
 ### 04 8086 Decoder Code Review 03.16
 
@@ -161,3 +162,11 @@
 
 - Casey demos how to use his reference decoder as a shared libarry
 - I am gonna use my own decoder
+
+### 06 Simulating Non-memory MOVs 03.26
+
+> As I said before, every operation this CPU can do has to be phrased in terms of these registers. Numbers get copied from memory into these registers, get modified by basic operations like addition and multiplication, and then get copied back out.
+- Homework: simulate non-memory `mov`
+  - Check code at `03.26` dir
+  - Pass listing43 to listing44
+  - TODO: listing45
