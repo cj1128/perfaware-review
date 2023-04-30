@@ -1,10 +1,10 @@
-module cjting.me/sim0086
+module cjting.me/perfaware
 
 go 1.20
 
 require (
 	github.com/k0kubun/pp v3.0.1+incompatible
-	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
+	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
 
 require (

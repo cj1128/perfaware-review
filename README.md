@@ -85,7 +85,7 @@
   - 13 seconds to parse input
   - 12 seconds to do the math
 - Statistics on my computer
-  - Check code at `02.23` dir
+  - The code is in folder `02.23`
   - ```
     Result: 57.97223693479388
     Input = 9.191009044647217 seconds
@@ -119,7 +119,7 @@
 - Read Intel 8086 manual to get more info about instruction structure
 - Use Netwide Assembler(NASM) to assemble
 - Homework: write a disassembler to disassemble register to register mov instruction
-  - Check code at `03.02` dir
+  - The Code is in folder `03.02`
 
 ### 02 Decoding Multiple Instructions and Suffixes 03.05
 
@@ -131,7 +131,7 @@
 - For `ax`, `bx`, `cx`, `dx`, we can use their high and low part separtely, but for `sp(stack pointer)`, `bp(base pointer)`, `si(source index)`, `di(destination index)`, we can't.
 - Specifal insturtion `Memory to accumulator` and `Accumulator to memory` for using ax.
 - Homework: continue to work on `mov` and handle more cases
-  - Check code at `03.05` dir
+  - The code is in folder `03.05`
   - Pass listing37 to listing40
   - NOTE
     - `displacement` is a signed 16 bit integer, even though the manual says it's unsigned
@@ -147,7 +147,7 @@
   - `s=1,w=0`: ADD REG8/MEM8, IMMED8
   - `s=1,w=1`: ADD REG16/MEM16, IMMED8
 - Homework: decode `add`, `sub` and `cmp`, each one has three different encodings (all of which exactly mirror one of the mov encodings)
-  - Check code at `03.10` dir
+  - The code is in folder `03.10`
   - For jumps, we can output `jxx/loopx $+2+[increment]` instead of producing labels
   - Pass listing37 to listing41
   - TODO: listing42
@@ -167,6 +167,19 @@
 
 > As I said before, every operation this CPU can do has to be phrased in terms of these registers. Numbers get copied from memory into these registers, get modified by basic operations like addition and multiplication, and then get copied back out.
 - Homework: simulate non-memory `mov`
-  - Check code at `03.26` dir
+  - The code is in folder `03.26`
   - Pass listing43 to listing44
   - TODO: listing45
+
+### 06 Simulating ADD, SUB, and CMP 04.03
+
+- `FLAGS` register
+  - A mov is defined to have no effect on the flags register.
+  - Arithmetic instruction may modify the flags register
+  - `ZF`: zero flag, whether the result is zero
+  - `SF`: signed flag, whether the highest bit of the result is set
+- `CMP` and `SUB` are the same thing, `CMP` is just a `SUB` that doesn't write the answer back
+- Homework: simulate `add`, `sub` and `cmp`
+  - The code is in folder `04.03`
+  - Pass listing46
+  - TODO: listing47
