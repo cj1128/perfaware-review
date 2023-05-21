@@ -185,3 +185,10 @@
   - TODO: listing47
 
 ### 08 Simulating Conditional Jumps
+
+- `IP` register: where the next instruction byte is coming from
+- > the IP register gets incremented before the decoded instruction is executed, not after!
+- Homework: simulate jumps
+  - The code is in folder `part1-08`
+  - Pass listing48 to listing49
+  - TODO: listing50
