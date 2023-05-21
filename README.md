@@ -9,14 +9,14 @@
 
 ## Prologue: The Five Multipliers
 
-### 01 Introduction 02.01
+### 01 Introduction
 
 - two ways to increase perofrmance
   - reduce the number of instructions
   - increase the speed of instructions
 - stop thinking exclusively about your source language, think about what that it turns to
 
-### 02 Waste 02.02
+### 02 Waste
 
 - Reasons of why program is getting slow
   - **#1**: waste
@@ -28,7 +28,7 @@
 - Improve the performance of Python code
   - Move the actual work out to bulk ops written in C
 
-### 03 Instructions per Clock 02.05
+### 03 Instructions per Clock
 
 - "IPC" or "ILP"
   - Instruction Per Clock
@@ -36,7 +36,7 @@
 - "Unrolling" a step, reduce the loop overhead
 - Break the serial chaining, give the CPU more things it can do at the same time
 
-### 04 Single Instruction, Multiple Data 02.08
+### 04 Single Instruction, Multiple Data
 
 - SSE: Streaming SIMD Extensions
 - SSE: 128bit, AVX: 256bit, AVX512: 512bit
@@ -51,11 +51,11 @@
   - L3: 4.4
   - Memory: 1.44
 
-### 06 Multithreading 02.16
+### 06 Multithreading
 
 - memory bandwidth is shared by all threads, and normally when you have 2 cores, you don't have doubled memory bandwidth
 
-### 07 Python Revisited 02.18
+### 07 Python Revisited
 
 - remember the two ways to increase speed
   - A. reduce the instructions
@@ -78,14 +78,14 @@
 
 ## Interlude
 
-### 01 The Haversine Distance Problem 02.23
+### 01 The Haversine Distance Problem
 
 - haversine distance: calculate distance of two points on a sphere
 - Takes 25 seconds of calculating 10 millions haversine distance
   - 13 seconds to parse input
   - 12 seconds to do the math
 - Statistics on my computer
-  - The code is in folder `02.23`
+  - The code is in folder `haversine-distance`
   - ```
     Result: 57.97223693479388
     Input = 9.191009044647217 seconds
@@ -94,7 +94,7 @@
     Throughput = 579557.4690589316 haversines/second
     ```
 
-### 02 "Clean" Code, Horrible Performance 02.28
+### 02 "Clean" Code, Horrible Performance
 
 - What is "clean" code?
   - Prefer polymorphism to “if/else” and “switch”
@@ -109,7 +109,7 @@
 
 ## Part 1: 8086/8088
 
-### 01 Instruction Decoding on the 8086 03.02
+### 01 Instruction Decoding on the 8086
 
 - In an 8086, a register was literally something that could store 16 bits of data.
 - In addition to naming the entire 16-bit register with AX, BX, and so on, you can also refer just to the high 8 or low 8 bits of a register using “L” and “H”.
@@ -119,7 +119,7 @@
 - Read Intel 8086 manual to get more info about instruction structure
 - Use Netwide Assembler(NASM) to assemble
 - Homework: write a disassembler to disassemble register to register mov instruction
-  - The Code is in folder `03.02`
+  - The Code is in folder `part1-01`
 
 ### 02 Decoding Multiple Instructions and Suffixes 03.05
 
@@ -131,13 +131,13 @@
 - For `ax`, `bx`, `cx`, `dx`, we can use their high and low part separtely, but for `sp(stack pointer)`, `bp(base pointer)`, `si(source index)`, `di(destination index)`, we can't.
 - Specifal insturtion `Memory to accumulator` and `Accumulator to memory` for using ax.
 - Homework: continue to work on `mov` and handle more cases
-  - The code is in folder `03.05`
+  - The code is in folder `part1-02`
   - Pass listing37 to listing40
   - NOTE
     - `displacement` is a signed 16 bit integer, even though the manual says it's unsigned
     - `accumulator` means `ax`
 
-### 03 Opcode Patterns in 8086 Arithmetic 03.10
+### 03 Opcode Patterns in 8086 Arithmetic
 
 - > It turns out add - like almost all the arithmetic operations in 8086 - also has a “mod reg r/m” encoding, so it can get its source from memory just as easily as a register!
 - `IP-INC8`: 8-bit signed increment to instruction pointer.
@@ -147,31 +147,31 @@
   - `s=1,w=0`: ADD REG8/MEM8, IMMED8
   - `s=1,w=1`: ADD REG16/MEM16, IMMED8
 - Homework: decode `add`, `sub` and `cmp`, each one has three different encodings (all of which exactly mirror one of the mov encodings)
-  - The code is in folder `03.10`
+  - The code is in folder `part1-03`
   - For jumps, we can output `jxx/loopx $+2+[increment]` instead of producing labels
   - Pass listing37 to listing41
   - TODO: listing42
 
-### 04 8086 Decoder Code Review 03.16
+### 04 8086 Decoder Code Review
 
 - Casey walks through his decoder implementation
   - a table based very flexiable way
   - slow now but it' can be improved
 
-### 05 Using the Reference Decoder as a Shared Library 03.22
+### 05 Using the Reference Decoder as a Shared Library
 
 - Casey demos how to use his reference decoder as a shared libarry
 - I am gonna use my own decoder
 
-### 06 Simulating Non-memory MOVs 03.26
+### 06 Simulating Non-memory MOVs
 
 > As I said before, every operation this CPU can do has to be phrased in terms of these registers. Numbers get copied from memory into these registers, get modified by basic operations like addition and multiplication, and then get copied back out.
 - Homework: simulate non-memory `mov`
-  - The code is in folder `03.26`
+  - The code is in folder `part1-06`
   - Pass listing43 to listing44
   - TODO: listing45
 
-### 06 Simulating ADD, SUB, and CMP 04.03
+### 07 Simulating ADD, SUB, and CMP
 
 - `FLAGS` register
   - A mov is defined to have no effect on the flags register.
@@ -180,6 +180,8 @@
   - `SF`: signed flag, whether the highest bit of the result is set
 - `CMP` and `SUB` are the same thing, `CMP` is just a `SUB` that doesn't write the answer back
 - Homework: simulate `add`, `sub` and `cmp`
-  - The code is in folder `04.03`
+  - The code is in folder `part1-07`
   - Pass listing46
   - TODO: listing47
+
+### 08 Simulating Conditional Jumps
